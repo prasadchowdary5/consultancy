@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students 5G Club - Job Seeker Consultancy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #1a73e8;
+            --secondary-color: #0d47a1;
+            --accent-color: #34a853;
+            --light-color: #f8f9fa;
+            --dark-color: #202124;
+            --gray-color: #5f6368;
+            --light-gray: #e8eaed;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f5f7fa;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        .btn-whatsapp {
+            background-color: #25D366;
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #1da851;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--secondary-color);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            font-size: 28px;
+            color: var(--primary-color);
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+        
+        .logo-text span {
+            color: var(--accent-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            font-weight: 600;
+            padding: 8px 0;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background-color: var(--primary-color);
+            bottom: 0;
+            left: 0;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        /* Registration Form */
+        .section-padding {
+            padding: 80px 0;
+        }
+        
+        .form-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
+        }
+        
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .file-input-container {
+            border: 2px dashed var(--light-gray);
+            border-radius: 4px;
+            padding: 20px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .file-input-container:hover {
+            border-color: var(--primary-color);
+        }
+        
+        .file-input-label {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            color: var(--gray-color);
+        }
+        
+        .file-input-label i {
+            font-size: 36px;
+            color: var(--primary-color);
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .file-name {
+            margin-top: 10px;
+            font-size: 14px;
+            color: var(--gray-color);
+        }
+        
+        .submit-btn {
+            width: 100%;
+            font-size: 18px;
+            padding: 15px;
+            margin-top: 10px;
+        }
+        
+        /* WhatsApp Channel */
+        .whatsapp-channel {
+            background-color: #f0f7ff;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .whatsapp-channel-icon {
+            font-size: 48px;
+            color: #25D366;
+            margin-bottom: 20px;
+        }
+        
+        .whatsapp-channel h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        .whatsapp-channel p {
+            margin-bottom: 25px;
+            color: var(--gray-color);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Job Updates */
+        .job-updates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .job-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .job-card-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+        }
+        
+        .job-card-body {
+            padding: 20px;
+        }
+        
+        .job-role {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .job-company {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .job-details {
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .job-detail {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            color: var(--gray-color);
+        }
+        
+        .job-detail i {
+            color: var(--primary-color);
+        }
+        
+        /* Contact & Footer */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .contact-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .contact-icon {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .contact-card h3 {
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .contact-card p {
+            color: var(--gray-color);
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--light-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent-color);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            transition: var(--transition);
+            color: #bdc1c6;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #3c4043;
+            color: #bdc1c6;
+            font-size: 14px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                flex-direction: column;
+                background-color: white;
+                padding: 20px;
+                box-shadow: var(--shadow);
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links a {
+                padding: 15px;
+                border-bottom: 1px solid var(--light-gray);
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .form-container {
+                padding: 25px;
+            }
+            
+            .section-padding {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
+            
+            .whatsapp-channel {
+                padding: 25px;
+            }
+            
+            .contact-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <div class="logo-icon"><i class="fas fa-broadcast-tower"></i></div>
+                    <div class="logo-text">Students <span>5G</span> Club</div>
+                </div>
+                
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+                
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#registration">Registration</a></li>
+                    <li><a href="#job-updates">Job Updates</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Your Gateway to Career Success</h1>
+                <p>Students 5G Club is a dedicated consultancy platform for job-seeking candidates. We connect talented individuals with top companies and provide real-time job updates to accelerate your career journey.</p>
+                <a href="#registration" class="btn">Register Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form -->
+    <section class="section-padding" id="registration">
+        <div class="container">
+            <h2 class="section-title">Candidate Registration</h2>
+            
+            <!-- WhatsApp Channel Section -->
+            <div class="whatsapp-channel">
+                <div class="whatsapp-channel-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <h3>Join Our WhatsApp Channel</h3>
+                <p>Get real-time job updates, interview tips, and career opportunities directly on WhatsApp. Stay ahead in your job search with instant notifications!</p>
+                <a href="https://wa.me/your-number" target="_blank" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> Join Students 5G Club Channel
+                </a>
+            </div>
+            
+            <div class="form-container">
+                <form id="registrationForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="mobile">Mobile Number</label>
+                            <input type="tel" id="mobile" name="mobile" placeholder="Enter your 10-digit mobile number" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email ID</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Upload Resume</label>
+                            <div class="file-input-container">
+                                <label for="resume" class="file-input-label">
+                                    <i class="fas fa-file-upload"></i>
+                                    <span>Click to upload your resume (PDF, DOC, DOCX)</span>
+                                    <input type="file" id="resume" name="resume" class="file-input" accept=".pdf,.doc,.docx" required>
+                                </label>
+                                <div class="file-name" id="resume-name">No file chosen</div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Upload Photo</label>
+                            <div class="file-input-container">
+                                <label for="photo" class="file-input-label">
+                                    <i class="fas fa-camera"></i>
+                                    <span>Click to upload your photo (JPG, PNG)</span>
+                                    <input type="file" id="photo" name="photo" class="file-input" accept=".jpg,.jpeg,.png" required>
+                                </label>
+                                <div class="file-name" id="photo-name">No file chosen</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="skills">Skills</label>
+                        <textarea id="skills" name="skills" placeholder="List your key skills (e.g., Java, Python, React, Project Management, Communication)" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="job-roles">Interested Job Roles</label>
+                        <select id="job-roles" name="job-roles" required>
+                            <option value="" disabled selected>Select your preferred job roles</option>
+                            <option value="Software Developer">Software Developer</option>
+                            <option value="Data Analyst">Data Analyst</option>
+                            <option value="Business Analyst">Business Analyst</option>
+                            <option value="Digital Marketing">Digital Marketing</option>
+                            <option value="HR Executive">HR Executive</option>
+                            <option value="Sales Executive">Sales Executive</option>
+                            <option value="Graphic Designer">Graphic Designer</option>
+                            <option value="Content Writer">Content Writer</option>
+                            <option value="Other">Other (Specify in Skills)</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn submit-btn">Submit Registration</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Updates -->
+    <section class="section-padding" id="job-updates">
+        <div class="container">
+            <h2 class="section-title">Latest Job Updates</h2>
+            
+            <div class="job-updates-grid">
+                <div class="job-card">
+                    <div class="job-card-header">
+                        <div class="job-role">Frontend Developer</div>
+                        <div class="job-company">Tech Solutions Inc.</div>
+                    </div>
+                    <div class="job-card-body">
+                        <p>Experience: 1-3 years</p>
+                        <p>Location: Bangalore / Remote</p>
+                        <div class="job-details">
+                            <div class="job-detail">
+                                <i class="fas fa-rupee-sign"></i> 6-10 LPA
+                            </div>
+                            <div class="job-detail">
+                                <i class="fas fa-briefcase"></i> Full-time
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="job-card">
+                    <div class="job-card-header">
+                        <div class="job-role">Data Analyst</div>
+                        <div class="job-company">Analytics Pro</div>
+                    </div>
+                    <div class="job-card-body">
+                        <p>Experience: 0-2 years</p>
+                        <p>Location: Mumbai</p>
+                        <div class="job-details">
+                            <div class="job-detail">
+                                <i class="fas fa-rupee-sign"></i> 4-7 LPA
+                            </div>
+                            <div class="job-detail">
+                                <i class="fas fa-briefcase"></i> Full-time
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="job-card">
+                    <div class="job-card-header">
+                        <div class="job-role">Digital Marketing Executive</div>
+                        <div class="job-company">Growth Marketing Ltd.</div>
+                    </div>
+                    <div class="job-card-body">
+                        <p>Experience: Freshers Welcome</p>
+                        <p>Location: Delhi / Hybrid</p>
+                        <div class="job-details">
+                            <div class="job-detail">
+                                <i class="fas fa-rupee-sign"></i> 3-5 LPA
+                            </div>
+                            <div class="job-detail">
+                                <i class="fas fa-briefcase"></i> Full-time
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Company Details -->
+    <section class="section-padding" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Our Office</h3>
+                    <p>5G Business Hub, Sector 62<br>Noida, Uttar Pradesh 201301</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Contact Numbers</h3>
+                    <p>+91 98765 43210<br>+91 11 2345 6789</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Address</h3>
+                    <p>careers@students5gclub.com<br>support@students5gclub.com</p>
+                </div>
+            </div>
+            
+            <!-- Company Details -->
+            <div style="margin-top: 60px; background-color: white; padding: 30px; border-radius: 8px; box-shadow: var(--shadow);">
+                <h3 style="text-align: center; margin-bottom: 30px; color: var(--secondary-color);">Partner Companies</h3>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; text-align: center;">
+                    <div>
+                        <h4>Tech Innovators Ltd.</h4>
+                        <p>HR Contact: +91 87654 32109</p>
+                        <p>careers@techinnovators.com</p>
+                    </div>
+                    <div>
+                        <h4>Global Solutions Inc.</h4>
+                        <p>HR Contact: +91 76543 21098</p>
+                        <p>hr@globalsolutions.com</p>
+                    </div>
+                    <div>
+                        <h4>Digital Future Corp</h4>
+                        <p>HR Contact: +91 65432 10987</p>
+                        <p>talent@digitalfuture.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Students 5G Club</h3>
+                    <p>Dedicated exclusively to job-seeking candidates. We bridge the gap between talent and opportunity with our focused consultancy services.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#registration">Registration</a></li>
+                        <li><a href="#job-updates">Job Updates</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fab fa-whatsapp"></i> WhatsApp Channel</a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Students 5G Club. All rights reserved. | Designed for job-seeking candidates</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+        
+        // File input name display
+        document.getElementById('resume').addEventListener('change', function(e) {
+            const fileName = e.target.files[0] ? e.target.files[0].name : 'No file chosen';
+            document.getElementById('resume-name').textContent = fileName;
+        });
+        
+        document.getElementById('photo').addEventListener('change', function(e) {
+            const fileName = e.target.files[0] ? e.target.files[0].name : 'No file chosen';
+            document.getElementById('photo-name').textContent = fileName;
+        });
+        
+        // Form submission handler
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const mobile = document.getElementById('mobile').value;
+            const email = document.getElementById('email').value;
+            const skills = document.getElementById('skills').value;
+            const jobRole = document.getElementById('job-roles').value;
+            
+            // Create WhatsApp message
+            const message = `*New Candidate Registration*%0A%0A*Name:* ${name}%0A*Mobile:* ${mobile}%0A*Email:* ${email}%0A*Skills:* ${skills}%0A*Interested Job Role:* ${jobRole}%0A%0AResume and Photo uploaded via form.`;
+            
+            // Replace with your WhatsApp number (without + sign or spaces)
+            const whatsappNumber = "8309957874";
+            
+            // Create WhatsApp URL
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
+            
+            // Open WhatsApp in a new tab
+            window.open(whatsappURL, '_blank');
+            
+            // Show success message
+            alert('Thank you for registering! You are being redirected to WhatsApp to send your details.');
+            
+            // Reset form
+            document.getElementById('registrationForm').reset();
+            document.getElementById('resume-name').textContent = 'No file chosen';
+            document.getElementById('photo-name').textContent = 'No file chosen';
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
